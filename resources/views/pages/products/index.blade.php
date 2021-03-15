@@ -27,8 +27,8 @@
                                     <th>Name</th>
                                     <th>Type</th>
                                     <th>Price</th>
-                                    <th>Quantity</th>
                                     <th>Descriptions</th>
+                                    <th>Quantity</th>
                                     <th>Status</th>
                                 </tr>
                             </thead>
