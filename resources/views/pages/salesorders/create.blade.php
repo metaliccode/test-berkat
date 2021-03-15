@@ -45,7 +45,7 @@
                             <div class="row">
                                 <div class="col-md-6 form-group">
                                     <label>Transaction Total</label>
-                                    <input type="number" class="form-control @error('transaction_total') is-invalid @enderror" id="transaction_total" placeholder="Masukan No. Handphone" name="transaction_total" value="{{old('transaction_total')}}">
+                                    <input type="number" class="form-control @error('transaction_total') is-invalid @enderror" id="transaction_total" name="transaction_total" value="{{old('transaction_total')}}">
                                         @error('transaction_total')
                                         <div id="validationServer03Feedback" class="invalid-feedback">
                                             {{$message}}

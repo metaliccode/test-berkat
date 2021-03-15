@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Sales_order;
 
 class DashboardController extends Controller
 {
@@ -19,6 +20,14 @@ class DashboardController extends Controller
 
     public function index()
     {
-        return view('pages.dashboard');
+        $income = Sales_order::where('transaction_status', 'SUCCESS')->sum('transaction_total');
+        $sales = Sales_order::count();
+        $items = Sales_order::orderBy('id', 'DESC')->take(5)->get();
+
+        return view('pages.dashboard')->with([
+            'income' => $income,
+            'sales' => $sales,
+            'items' => $items
+        ]);
     }
 }

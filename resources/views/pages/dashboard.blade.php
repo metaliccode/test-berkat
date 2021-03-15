@@ -22,7 +22,7 @@
                         </div>
                         <div class="stat-content">
                             <div class="text-left dib">
-                                <div class="stat-text">Rp. <span class="count">123901212</span></div>
+                                <div class="stat-text">Rp. <span class="count">{{$income}}</span></div>
                                 <div class="stat-heading">Penghasilan</div>
                             </div>
                         </div>
@@ -40,7 +40,7 @@
                         </div>
                         <div class="stat-content">
                             <div class="text-left dib">
-                                <div class="stat-text"><span class="count">3435</span></div>
+                                <div class="stat-text"><span class="count">{{$sales}}</span></div>
                                 <div class="stat-heading">Penjualan</div>
                             </div>
                         </div>
@@ -75,16 +75,34 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @forelse ($items as $item)
+                                <tr>
+                                    <td>{{ $item->id }}</td>
+                                    <td>{{ $item->uuid }}</td>
+                                    <td>{{ $item->customers_id }}</td>
+                                    <td>{{ $item->products_id }}</td>
+                                    <td>Rp. {{ $item->transaction_total }}</td>
+                                    <td>
+                                        @if($item->transaction_status == 'PENDING')
+                                        <span class="badge badge-info">
+                                        @elseif($item->transaction_status == 'SUCCESS')
+                                        <span class="badge badge-success">
+                                        @elseif($item->transaction_status == 'FAILED')
+                                        <span class="badge badge-danger">
+                                        @else
+                                        <span>
+                                        @endif
+                                        {{ $item->transaction_status }}
+                                        </span>
+                                    </td>
+                                </tr>
+                                @empty
                                     <tr>
-                                        <td class="serial">1.</td>
-                                        <td>RTX123 </td>
-                                        <td><span class="name">Ihsan Miftahul Huda</span> </td>
-                                        <td><span class="product">Nike Air jordan</span> </td>
-                                        <td><span class="count">1</span></td>
-                                        <td>
-                                            <span class="badge badge-complete">Complete</span>
+                                        <td colspan="6" class="text-center p-5">
+                                        Data tidak tersedia
                                         </td>
                                     </tr>
+                                @endforelse
                                 </tbody>
                             </table>
                         </div> 
