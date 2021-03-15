@@ -13,9 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'DashboardController@index')->name('dashboard');
-
 Auth::routes();
+
+// untuk logout
+Route::get('logout', function () {
+    Auth::logout();
+    return Redirect::to('/login');
+});
+
+Route::get('/', 'DashboardController@index')->name('dashboard');
 
 Route::resource('products', 'ProductController');
 
