@@ -74,28 +74,20 @@
                                     @enderror
                                 </div>
 
-                                <div class="col-md-3 form-group">
-                                    <label>gambar</label>
-                                        <input type="text" class="form-control @error('photo') is-invalid @enderror" id="photo" placeholder="Masukan Kuantitas" name="photo" 
-                                        value="{{old('photo') ? old('photo') : $item->photo }}">
+                                <div class="col-md-3">
+                                    <img src="{{url($item->photo)}}" alt="" width="auto" height="60">
+                                <input type="file" class="mt-3 form-control-file @error('photo') is-invalid @enderror" id="photo" name="photo" 
+                                    value="{{old('photo') ? old('photo') : $item->photo }}">
                                     @error('photo')
-                                        <div id="validationServer03Feedback" class="invalid-feedback">
-                                            {{$message}}
-                                        </div>
+                                    <div id="validationServer03Feedback" class="invalid-feedback">
+                                        {{$message}}
+                                    </div>
                                     @enderror
-                                </div>
-
-                                {{--  <div class="col-md-6 form-group">
-                                    <label>Photo</label>
-                                    <input type="file" class="form-control-file @error('photo') is-invalid @enderror" id="photo" placeholder="Masukan photo" name="photo" value="{{old('photo')}}">
-                                    @error('photo')
-                                      <div id="validationServer03Feedback" class="invalid-feedback">
-                                          {{$message}}
-                                      </div>
-                                    @enderror
-                                </div>  --}}
-                            </div>        
-                            <button type="submit" class="btn btn-primary">Ubah Data</button>
+                                </div> 
+                                  
+                            </div>
+                            
+                            <button type="submit" class="mt-5 btn btn-primary">Ubah Data</button>
                         </form>  
                     </div>
                 </div> 

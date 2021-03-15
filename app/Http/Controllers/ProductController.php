@@ -61,6 +61,11 @@ class ProductController extends Controller
         $data = $request->all();
         //untuk url-bla-bla
         $data['slug'] = Str::slug($request->name);
+
+        $data['photo'] = $request->file('photo')->store(
+            'assets/product',
+            'public'
+        );
         //insert data ke table
         Product::create($data);
         return redirect()->route('products.index');
@@ -105,6 +110,10 @@ class ProductController extends Controller
         $data = $request->all();
         $data['slug'] = str::slug($request->name);
 
+        $data['photo'] = $request->file('photo')->store(
+            'assets/product',
+            'public'
+        );
         // insert --> update data lama
         $item = Product::findOrFail($id);
         $item->update($data);

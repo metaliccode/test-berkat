@@ -24,13 +24,13 @@
                                     <th>Status</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                
-                                
+                            <tbody>      
                                 @forelse ($items as $item)
                                 <tr>
                                     <td>{{ $item->id }}</td>
-                                    <td>{{ $item->photo }}</td>
+                                    <td>
+                                        <img src="{{url($item->photo)}}" alt="" width="auto" height="40">  
+                                    </td>
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->type }}</td>
                                     <td>{{ $item->price }}</td>
