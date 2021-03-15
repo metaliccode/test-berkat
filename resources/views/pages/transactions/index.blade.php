@@ -22,9 +22,9 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
+                                    <th>Transaction ID</th>
                                     <th>Customers ID</th>
                                     <th>Products ID</th>
-                                    {{--  <th>Nomor</th>  --}}
                                     <th>Transaction Total</th>
                                     <th>Transaction Status</th>
                                     <th>Action</th>
@@ -34,6 +34,7 @@
                                 @forelse ($items as $item)
                                 <tr>
                                     <td>{{ $item->id }}</td>
+                                    <td>{{ $item->uuid }}</td>
                                     <td>{{ $item->customers_id }}</td>
                                     <td>{{ $item->products_id }}</td>
                                     <td>{{ $item->transaction_total }}</td>
@@ -67,9 +68,9 @@
                                           class="btn btn-info btn-sm">
                                           <i class="fa fa-eye"></i>
                                         </a>
-                                        <a href="{{ route('transactions.edit', $item->id) }}" class="btn btn-primary btn-sm">
+                                        {{--  <a href="{{ route('transactions.edit', $item->id) }}" class="btn btn-primary btn-sm">
                                           <i class="fa fa-pencil"></i>
-                                        </a>
+                                        </a>  --}}
                                         <form action="{{ route('transactions.destroy', $item->id) }}" 
                                               method="post" 
                                               class="d-inline">

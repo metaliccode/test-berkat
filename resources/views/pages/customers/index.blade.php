@@ -30,8 +30,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                
-                                
+                                                               
                                 @forelse ($items as $item)
                                 <tr>
                                     <td>{{ $item->id }}</td>

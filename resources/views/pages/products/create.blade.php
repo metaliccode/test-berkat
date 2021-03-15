@@ -63,20 +63,11 @@
                                     </div>
                                   @enderror
                                 </div>
-{{--  
-                                <div class="col-md-3 form-group">
-                                    <label>gambar</label>
-                                    <input type="text" class="form-control @error('photo') is-invalid @enderror" id="photo" placeholder="Masukan Kuantitas" name="photo" value="{{old('photo')}}">
-                                    @error('photo')
-                                    <div id="validationServer03Feedback" class="invalid-feedback">
-                                        {{$message}}
-                                    </div>
-                                  @enderror
-                                </div>  --}}
 
                                 <div class="col-md-6 form-group">
                                     <label>Photo</label>
-                                    <input type="file" class="form-control-file @error('photo') is-invalid @enderror" id="photo" placeholder="Masukan photo" name="photo" value="{{old('photo')}}">
+                                    <input type="file" class="form-control-file @error('photo') is-invalid @enderror" id="photo" placeholder="Masukan photo"
+                                        name="photo" value="{{old('photo')}}" required>
                                     @error('photo')
                                       <div id="validationServer03Feedback" class="invalid-feedback">
                                           {{$message}}
