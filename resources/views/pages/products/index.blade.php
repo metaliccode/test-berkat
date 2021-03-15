@@ -29,6 +29,7 @@
                                     <th>Type</th>
                                     <th>Price</th>
                                     <th>Quantity</th>
+                                    <th>Descriptions</th>
                                     <th>Status</th>
                                 </tr>
                             </thead>
@@ -42,6 +43,7 @@
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->type }}</td>
                                     <td>{{ $item->price }}</td>
+                                    <td>{{ $item->description }}</td>
                                     <td>{{ $item->quantity }}</td>
                                     <td>
                                          {{--  <a href="{{ route('products.gallery')}}" class="btn btn-info btn-sm">
