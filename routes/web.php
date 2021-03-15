@@ -27,4 +27,4 @@ Route::resource('products', 'ProductController');
 
 Route::resource('customers', 'CustomerController');
 
-Route::resource('transactions', 'Sales_orderController');
+Route::resource('salesorders', 'Sales_orderController');

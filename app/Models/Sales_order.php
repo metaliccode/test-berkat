@@ -14,22 +14,4 @@ class Sales_order extends Model
     ];
 
     protected $hidden = [];
-
-    public function product()
-    {
-        // relasi ke products
-        return $this->belongsTo(Product::class, 'products_id', 'id');
-    }
-
-    public function customer()
-    {
-        // relasi ke customer
-        return $this->belongsTo(Customer::class, 'customers_id', 'id');
-    }
-
-    public function details()
-    {
-        // relasi ke customer
-        return $this->hasMany(TannsactionDetail::class, 'transactions_id');
-    }
 }

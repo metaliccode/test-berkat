@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Sales_order;
 use App\Models\Customer;
 use App\Models\Product;
-use App\Models\Sales_order;
-use App\Http\Requests\Sales_orderRequest;
+
 use Illuminate\Http\Request;
 
 class Sales_orderController extends Controller
@@ -29,7 +29,7 @@ class Sales_orderController extends Controller
     {
         $items = Sales_order::all();
 
-        return view('pages.transactions.index')->with([
+        return view('pages.salesorders.index')->with([
             'items' => $items
         ]);
     }
@@ -44,7 +44,7 @@ class Sales_orderController extends Controller
         $products = Product::all();
         $customers = Customer::all();
 
-        return view('pages.transactions.create')->with([
+        return view('pages.salesorders.create')->with([
             'products' => $products,
             'customers' => $customers
         ]);
@@ -56,38 +56,36 @@ class Sales_orderController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Sales_orderRequest $request)
+    public function store(Request $request)
     {
-        //membuat requst ketentuan yang ada di Request
         $data = $request->all();
 
-        //insert data ke table
+        $data['uuid'] = 'TRX' . mt_rand(10000, 99999) . mt_rand(100, 999);
+        // $data['uuid'] = 'TRX' . mt_rand(10000, 99999) . mt_rand(100, 999);
+
         Sales_order::create($data);
-        return redirect()->route('transactions.index');
+
+        return redirect()->route('salesorders.index')->with('status', 'Data Transaksi Berhasil Ditambahkan!');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Sales_order  $sales_order
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $item = Sales_order::with('details.product')->findOrFail($id);
-
-        return view('pages.transactions.show')->with([
-            'item' => $item
-        ]);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Sales_order  $sales_order
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Sales_order $sales_order)
+    public function edit($id)
     {
         //
     }
@@ -96,10 +94,10 @@ class Sales_orderController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Sales_order  $sales_order
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Sales_order $sales_order)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -107,11 +105,14 @@ class Sales_orderController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Sales_order  $sales_order
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Sales_order $sales_order)
+    public function destroy($id)
     {
-        //
+        $item = Sales_order::findOrFail($id);
+        $item->delete();
+
+        return redirect()->route('salesorders.index')->with('status', 'Data Transaksi Berhasil Dihapus!');
     }
 }

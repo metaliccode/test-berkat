@@ -24,11 +24,11 @@ class Sales_orderRequest extends FormRequest
     public function rules()
     {
         return [
-            'uuid' => 'required|string',
-            'costumers_id' => 'required|integer',
+            'uuid' => 'required|max:255',
+            'customers_id' => 'required|integer',
             'products_id' => 'required|integer',
             'transaction_total' => 'required|integer',
-            'transaction_status' => 'nullable|string|in:PENDING,SUCCESS,FAILED'
+            'transaction_status' => 'required|max:255'
         ];
     }
 }

@@ -25,10 +25,10 @@
 
                 <li class="menu-title">Sales Order</li>
                 <li class="">
-                    <a href="{{ route('transactions.index')}}"> <i class="menu-icon fa fa-list"></i>Lihat Transaksi</a>
+                    <a href="{{ route('salesorders.index')}}"> <i class="menu-icon fa fa-list"></i>Lihat Transaksi</a>
                 </li>
                 <li class="">
-                    <a href="{{ route('transactions.create') }}"> <i class="menu-icon fa fa-plus"></i>Tambah Transaksi Baru</a>
+                    <a href="{{ route('salesorders.create') }}"> <i class="menu-icon fa fa-plus"></i>Tambah Transaksi Baru</a>
                 </li>
             </ul>
         </div>
