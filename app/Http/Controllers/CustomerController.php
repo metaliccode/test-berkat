@@ -57,7 +57,7 @@ class CustomerController extends Controller
         //insert data ke table
         Customer::create($data);
 
-        return redirect()->route('customers.index');
+        return redirect()->route('customers.index')->with('status', 'Data Pelanggan Berhasil Ditambahkan!');
     }
 
     /**
@@ -102,7 +102,7 @@ class CustomerController extends Controller
         $item = Customer::findOrFail($id);
         $item->update($data);
 
-        return redirect()->route('customers.index');
+        return redirect()->route('customers.index')->with('status', 'Data Pelanggan Berhasil Dirubah!');
     }
 
     /**
@@ -117,6 +117,6 @@ class CustomerController extends Controller
         $item = Customer::findOrFail($id);
         $item->delete();
 
-        return redirect()->route('customers.index');
+        return redirect()->route('customers.index')->with('status', 'Data Pelanggan Berhasil Dihapus!');
     }
 }

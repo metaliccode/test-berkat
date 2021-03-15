@@ -68,7 +68,7 @@ class ProductController extends Controller
         );
         //insert data ke table
         Product::create($data);
-        return redirect()->route('products.index');
+        return redirect()->route('products.index')->with('status', 'Data Produk Berhasil Ditambahkan!');
     }
 
     /**
@@ -118,7 +118,7 @@ class ProductController extends Controller
         $item = Product::findOrFail($id);
         $item->update($data);
 
-        return redirect()->route('products.index');
+        return redirect()->route('products.index')->with('status', 'Data Produk Berhasil Didiubah!');
     }
 
     /**
@@ -136,7 +136,7 @@ class ProductController extends Controller
         //Kondisi -> delete cascade if product was deleted than products_galleries are deleted
         // ProductGallery::where('products_id', $id)->delete();
 
-        return redirect()->route('products.index');
+        return redirect()->route('products.index')->with('status', 'Data Produk Berhasil Dihapus!');
     }
 
     // fungsi untuk menampilkan foto detail
